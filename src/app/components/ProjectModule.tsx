@@ -21,6 +21,7 @@ export function ProjectModule() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(4);
 
   useEffect(() => {
     let isActive = true;
@@ -29,6 +30,7 @@ export function ProjectModule() {
       try {
         setIsLoading(true);
         setHasError(false);
+        setVisibleCount(4);
 
         const repoResponse = await fetch(
           `/api/github-repos?user=${encodeURIComponent(
@@ -69,6 +71,11 @@ export function ProjectModule() {
     };
   }, []);
 
+  const canLoadMore = !isLoading && !hasError && visibleCount < projects.length;
+  const canShowLess = !isLoading && !hasError && visibleCount > 4;
+  const canShowAll =
+    !isLoading && !hasError && projects.length > 0 && visibleCount < projects.length;
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       {isLoading && (
@@ -86,7 +93,7 @@ export function ProjectModule() {
           No public repositories found.
         </div>
       )}
-      {projects.map((project, index) => (
+      {projects.slice(0, visibleCount).map((project, index) => (
         <motion.div
           key={project.id}
           initial={{ opacity: 0, y: 30 }}
@@ -192,6 +199,34 @@ export function ProjectModule() {
           />
         </motion.div>
       ))}
+      {(canLoadMore || canShowLess || canShowAll) && (
+        <div className="col-span-full flex flex-wrap justify-center gap-3">
+          {canLoadMore && (
+            <button
+              onClick={() => setVisibleCount((count) => count + 4)}
+              className="border border-cyan-400 text-cyan-400 font-mono text-sm tracking-wider py-3 px-6 hover:bg-cyan-400 hover:text-slate-900 transition-all"
+            >
+              LOAD MORE
+            </button>
+          )}
+          {canShowAll && (
+            <button
+              onClick={() => setVisibleCount(projects.length)}
+              className="border border-cyan-400/50 text-cyan-300 font-mono text-sm tracking-wider py-3 px-6 hover:border-cyan-400 hover:text-cyan-200 transition-all"
+            >
+              SHOW ALL
+            </button>
+          )}
+          {canShowLess && (
+            <button
+              onClick={() => setVisibleCount(4)}
+              className="border border-cyan-400/30 text-cyan-400/80 font-mono text-sm tracking-wider py-3 px-6 hover:border-cyan-400 hover:text-cyan-300 transition-all"
+            >
+              SHOW LESS
+            </button>
+          )}
+        </div>
+      )}
     </div>
   );
 }

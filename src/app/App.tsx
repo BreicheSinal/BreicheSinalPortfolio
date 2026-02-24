@@ -32,23 +32,10 @@ export default function App() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-6">
+      <section className="relative min-h-[calc(100svh-80px)] md:min-h-screen flex items-center justify-center px-6 pt-32 pb-24 md:py-0">
         <ScanningLine />
 
         <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mb-6"
-          >
-            <div className="inline-block px-3 py-1 border border-cyan-500/50 bg-cyan-500/10 mb-8">
-              <span className="font-mono text-xs text-cyan-400 tracking-widest">
-                SYSTEM STATUS: ONLINE
-              </span>
-            </div>
-          </motion.div>
-
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -70,8 +57,8 @@ export default function App() {
             transition={{ duration: 0.6, delay: 2.5 }}
             className="text-lg md:text-xl text-slate-300 mb-12 font-light max-w-2xl mx-auto leading-relaxed"
           >
-            Architecting scalable web solutions with precision engineering and
-            innovative technical implementations
+            Building clean, scalable web apps with a focus on reliability and
+            performance.
           </motion.p>
 
           <motion.div
@@ -120,14 +107,14 @@ export default function App() {
         </div>
 
         {/* Decorative corner elements */}
-        <div className="absolute top-24 left-8 w-20 h-20 border-t-2 border-l-2 border-cyan-400/30" />
-        <div className="absolute top-24 right-8 w-20 h-20 border-t-2 border-r-2 border-cyan-400/30" />
-        <div className="absolute bottom-8 left-8 w-20 h-20 border-b-2 border-l-2 border-cyan-400/30" />
-        <div className="absolute bottom-8 right-8 w-20 h-20 border-b-2 border-r-2 border-cyan-400/30" />
+        <div className="absolute top-24 left-8 w-20 h-20 border-t-2 border-l-2 border-cyan-400/30 pointer-events-none" />
+        <div className="absolute top-24 right-8 w-20 h-20 border-t-2 border-r-2 border-cyan-400/30 pointer-events-none" />
+        <div className="absolute bottom-8 left-8 w-20 h-20 border-b-2 border-l-2 border-cyan-400/30 pointer-events-none" />
+        <div className="absolute bottom-8 right-8 w-20 h-20 border-b-2 border-r-2 border-cyan-400/30 pointer-events-none" />
       </section>
 
       {/* About Section */}
-      <section id="about" className="relative py-32 px-6">
+      <section id="about" className="relative py-24 px-6">
         <div className="max-w-6xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0 }}
@@ -143,7 +130,7 @@ export default function App() {
               <div className="h-[1px] flex-1 bg-gradient-to-r from-cyan-400/50 to-transparent" />
             </div>
             <h2 className="text-3xl md:text-4xl font-mono tracking-tight text-white">
-              SYSTEM OVERVIEW
+              ABOUT
             </h2>
           </motion.div>
 
@@ -154,22 +141,20 @@ export default function App() {
                   PROFILE
                 </h3>
                 <p className="text-slate-300 leading-relaxed mb-6 font-light">
-                  Full Stack Web Developer with 2+ years of experience designing
-                  and implementing modern web applications. Specialized in
-                  React, Node.js, real-time applications, and full-stack
-                  development with expertise in both frontend and backend
-                  technologies.
+                  Full Stack Web Developer with 2+ years of experience building
+                  modern web applications. Focused on creating reliable,
+                  user-friendly products. Also experienced in game development.
                 </p>
                 <p className="text-slate-300 leading-relaxed font-light">
-                  Background in Computer Science with focus on Computer Graphics
-                  and Animation, bringing unique perspective to creating
-                  visually engaging and technically robust web solutions.
+                  Background in Computer Science with a focus on Computer
+                  Graphics and Animation. This helps me build clear and engaging
+                  web experiences.
                 </p>
               </div>
 
               <div>
                 <h3 className="text-xl font-mono text-cyan-400 mb-4 tracking-wide">
-                  SPECIFICATIONS
+                  DETAILS
                 </h3>
                 <div className="space-y-3 font-mono text-sm">
                   <div className="flex items-center gap-3">
@@ -210,7 +195,7 @@ export default function App() {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="relative py-32 px-6">
+      <section id="experience" className="relative py-24 px-6">
         <div className="max-w-6xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0 }}
@@ -235,7 +220,7 @@ export default function App() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="relative py-32 px-6">
+      <section id="skills" className="relative py-24 px-6">
         <div className="max-w-6xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0 }}
@@ -262,7 +247,7 @@ export default function App() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="relative py-32 px-6">
+      <section id="projects" className="relative py-24 px-6">
         <div className="max-w-6xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0 }}
@@ -286,8 +271,8 @@ export default function App() {
         </div>
       </section>
 
-      {/* Resume Section */}
-      <section id="resume" className="relative py-32 px-6">
+      {/* Certifications Section */}
+      <section id="certifications" className="relative py-24 px-6">
         <div className="max-w-6xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0 }}
@@ -303,16 +288,16 @@ export default function App() {
               <div className="h-[1px] flex-1 bg-gradient-to-r from-cyan-400/50 to-transparent" />
             </div>
             <h2 className="text-3xl md:text-4xl font-mono tracking-tight text-white">
-              TECHNICAL DOCUMENTATION
+              CERTIFICATIONS & TRAINING
             </h2>
           </motion.div>
 
-          <ResumeSection />
+          <Certifications />
         </div>
       </section>
 
-      {/* Certifications Section */}
-      <section id="certifications" className="relative py-32 px-6">
+      {/* Resume Section */}
+      <section id="resume" className="relative py-24 px-6">
         <div className="max-w-6xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0 }}
@@ -328,16 +313,16 @@ export default function App() {
               <div className="h-[1px] flex-1 bg-gradient-to-r from-cyan-400/50 to-transparent" />
             </div>
             <h2 className="text-3xl md:text-4xl font-mono tracking-tight text-white">
-              CERTIFICATIONS & TRAINING
+              TECHNICAL DOCUMENTATION
             </h2>
           </motion.div>
 
-          <Certifications />
+          <ResumeSection />
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="relative py-32 px-6">
+      <section id="contact" className="relative py-24 px-6">
         <div className="max-w-6xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0 }}

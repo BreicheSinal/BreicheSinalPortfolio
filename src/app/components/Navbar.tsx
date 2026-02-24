@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { Terminal, Menu, X } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 interface NavItem {
   label: string;
@@ -20,14 +20,20 @@ const navItems: NavItem[] = [
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
+  const navRef = useRef<HTMLElement | null>(null);
+
+  const scrollToSection = (href: string) => {
+    const element = document.querySelector(href);
+    if (!element) return;
+    const navHeight = navRef.current?.getBoundingClientRect().height ?? 0;
+    const top = element.getBoundingClientRect().top + window.scrollY - navHeight;
+    window.scrollTo({ top, behavior: 'smooth' });
+  };
 
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setIsMenuOpen(false); // Close mobile menu after navigation
-    }
+    setIsMenuOpen(false); // Close mobile menu after navigation
+    requestAnimationFrame(() => scrollToSection(href));
   };
 
   useEffect(() => {
@@ -60,6 +66,7 @@ export function Navbar() {
 
   return (
     <motion.nav
+      ref={navRef}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}

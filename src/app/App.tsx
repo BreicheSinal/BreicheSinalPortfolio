@@ -206,6 +206,31 @@ export default function App() {
         </div>
       </section>
 
+      {/* Certifications Section */}
+      <section id="certifications" className="relative py-24 px-6">
+        <div className="max-w-6xl mx-auto relative z-10">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mb-12"
+          >
+            <div className="flex items-center gap-4 mb-4">
+              <span className="font-mono text-cyan-400 text-sm tracking-widest">
+                03
+              </span>
+              <div className="h-[1px] flex-1 bg-gradient-to-r from-cyan-400/50 to-transparent" />
+            </div>
+            <h2 className="text-3xl md:text-4xl font-mono tracking-tight text-white">
+              CERTIFICATIONS & TRAINING
+            </h2>
+          </motion.div>
+
+          <Certifications />
+        </div>
+      </section>
+
       {/* Skills Section */}
       <section id="skills" className="relative py-24 px-6">
         <div className="max-w-6xl mx-auto relative z-10">
@@ -218,7 +243,7 @@ export default function App() {
           >
             <div className="flex items-center gap-4 mb-4">
               <span className="font-mono text-cyan-400 text-sm tracking-widest">
-                03
+                04
               </span>
               <div className="h-[1px] flex-1 bg-gradient-to-r from-cyan-400/50 to-transparent" />
             </div>
@@ -245,7 +270,7 @@ export default function App() {
           >
             <div className="flex items-center gap-4 mb-4">
               <span className="font-mono text-cyan-400 text-sm tracking-widest">
-                04
+                05
               </span>
               <div className="h-[1px] flex-1 bg-gradient-to-r from-cyan-400/50 to-transparent" />
             </div>
@@ -255,31 +280,6 @@ export default function App() {
           </motion.div>
 
           <ProjectModule />
-        </div>
-      </section>
-
-      {/* Certifications Section */}
-      <section id="certifications" className="relative py-24 px-6">
-        <div className="max-w-6xl mx-auto relative z-10">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-12"
-          >
-            <div className="flex items-center gap-4 mb-4">
-              <span className="font-mono text-cyan-400 text-sm tracking-widest">
-                05
-              </span>
-              <div className="h-[1px] flex-1 bg-gradient-to-r from-cyan-400/50 to-transparent" />
-            </div>
-            <h2 className="text-3xl md:text-4xl font-mono tracking-tight text-white">
-              CERTIFICATIONS & TRAINING
-            </h2>
-          </motion.div>
-
-          <Certifications />
         </div>
       </section>
 

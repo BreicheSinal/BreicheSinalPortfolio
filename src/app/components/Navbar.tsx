@@ -10,10 +10,10 @@ interface NavItem {
 const navItems: NavItem[] = [
   { label: 'ABOUT', href: '#about' },
   { label: 'EXPERIENCE', href: '#experience' },
+  { label: 'CERTIFICATIONS', href: '#certifications' },
   { label: 'SKILLS', href: '#skills' },
   { label: 'PROJECTS', href: '#projects' },
   { label: 'RESUME', href: '#resume' },
-  { label: 'CERTIFICATIONS', href: '#certifications' },
   { label: 'CONTACT', href: '#contact' },
 ];
 

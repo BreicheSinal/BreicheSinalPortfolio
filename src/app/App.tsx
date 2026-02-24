@@ -90,20 +90,7 @@ export default function App() {
             </a>
           </motion.div>
 
-          {/* Scroll indicator */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 3.5 }}
-            className="absolute bottom-12 left-1/2 -translate-x-1/2"
-          >
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              <ChevronDown className="w-6 h-6 text-cyan-400" />
-            </motion.div>
-          </motion.div>
+          {/* Scroll indicator removed */}
         </div>
 
         {/* Decorative corner elements */}

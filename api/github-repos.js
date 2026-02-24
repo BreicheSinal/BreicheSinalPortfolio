@@ -5,6 +5,11 @@ const FEATURED_REPOS = process.env.FEATURED_REPOS
       .map((name) => name.trim())
       .filter(Boolean)
   : [];
+const HIDE_REPOS = process.env.HIDE_REPOS
+  ? process.env.HIDE_REPOS.split(',')
+      .map((name) => name.trim())
+      .filter(Boolean)
+  : [];
 
 let lastSuccessfulPayload = null;
 
@@ -54,7 +59,10 @@ export default async function handler(req, res) {
     }
 
     const repos = await repoResponse.json();
-    const publicRepos = repos.filter((repo) => !repo.fork);
+    const hideSet = new Set(HIDE_REPOS.map((name) => name.toLowerCase()));
+    const publicRepos = repos.filter(
+      (repo) => !repo.fork && !hideSet.has(repo.name.toLowerCase())
+    );
     const featuredSet = new Set(FEATURED_REPOS.map((name) => name.toLowerCase()));
     const featuredRepos =
       FEATURED_REPOS.length > 0

@@ -7,6 +7,7 @@ Full Stack Web Developer based in Beirut, Lebanon with 2+ years of experience de
 Email: `sinalbreiche@gmail.com`  
 GitHub: `https://github.com/BreicheSinal`  
 LinkedIn: `https://linkedin.com/in/sinalbreiche`
+Behance: `https://www.behance.net/sinalbreiche`
 
 ## Getting Started
 

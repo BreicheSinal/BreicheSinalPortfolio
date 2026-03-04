@@ -88,7 +88,6 @@ export function UnityGamesModule() {
         <ModuleCard
           key={game.id}
           delay={index * 0.1}
-          className="flex flex-col h-full"
         >
           <div className="flex flex-col h-full">
             <div className="flex items-start justify-between mb-4">
@@ -109,8 +108,8 @@ export function UnityGamesModule() {
               <div
                 className={
                   game.status === "DOWNLOADABLE"
-                    ? "px-2 py-1 text-[10px] font-mono border border-emerald-500/60 text-emerald-400 bg-emerald-500/10"
-                    : "px-2 py-1 text-[10px] font-mono border border-red-500/60 text-red-400 bg-red-500/10"
+                    ? "px-2 py-1 text-[10px] font-mono border border-green-500/50 text-green-400 bg-green-500/10"
+                    : "px-2 py-1 text-[10px] font-mono border border-red-500/50 text-red-400 bg-red-500/10"
                 }
               >
                 {game.status}

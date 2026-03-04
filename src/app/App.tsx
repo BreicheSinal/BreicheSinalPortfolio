@@ -3,7 +3,7 @@ import { TypingText } from "./components/TypingText";
 import { ScanningLine } from "./components/ScanningLine";
 import { TechnicalPanel } from "./components/TechnicalPanel";
 import { SkillDiagram } from "./components/SkillDiagram";
-import { ProjectModule } from "./components/ProjectModule";
+import { GithubModule } from "./components/GithubModule";
 import { UnityGamesModule } from "./components/UnityGamesModule";
 import { ModelingModule } from "./components/ModelingModule";
 import { ExperienceTimeline } from "./components/ExperienceTimeline";
@@ -311,7 +311,7 @@ export default function App() {
                 </span>
                 <div className="h-[1px] flex-1 bg-gradient-to-r from-cyan-400/50 to-transparent" />
               </div>
-              <ProjectModule />
+              <GithubModule />
             </div>
 
             <div>
@@ -456,7 +456,7 @@ export default function App() {
 
             <div className="flex flex-col items-center md:items-end gap-1 font-mono text-xs text-slate-400">
               <span>© 2026 SINAL BREICHE</span>
-              <span className="text-cyan-400/70 tracking-widest">v0.2.0</span>
+              <span className="text-cyan-400/70 tracking-widest">v0.3.0</span>
             </div>
           </div>
         </div>

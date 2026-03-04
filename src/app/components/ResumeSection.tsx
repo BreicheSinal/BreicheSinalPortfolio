@@ -30,7 +30,7 @@ export function ResumeSection() {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="relative border border-cyan-500/30 bg-slate-900/80 backdrop-blur-sm p-6"
+        className="relative border border-cyan-500/30 bg-slate-900/80 backdrop-blur-sm p-6 flex flex-col"
       >
         {/* Corner brackets */}
         <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-cyan-400" />
@@ -45,7 +45,7 @@ export function ResumeSection() {
           </h3>
         </div>
 
-        <div className="space-y-4 font-mono">
+        <div className="space-y-4 font-mono flex-1">
           {specifications.map((spec, index) => (
             <motion.div
               key={spec.label}
@@ -70,9 +70,9 @@ export function ResumeSection() {
         </div>
 
         <a
-          href="/BreicheSinal.pdf"
+          href="/downloads/BreicheSinal.pdf"
           download
-          className="w-full mt-8 px-6 py-3 border-2 border-cyan-400 text-cyan-400 font-mono text-sm tracking-wider hover:bg-cyan-400 hover:text-slate-900 transition-all flex items-center justify-center gap-2 group"
+          className="w-full mt-auto px-6 py-3 border-2 border-cyan-400 text-cyan-400 font-mono text-sm tracking-wider hover:bg-cyan-400 hover:text-slate-900 transition-all flex items-center justify-center gap-2 group"
         >
           <Download className="w-4 h-4 group-hover:animate-bounce" />
           <span>DOWNLOAD RESUME</span>

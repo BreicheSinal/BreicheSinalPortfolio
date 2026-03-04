@@ -18,7 +18,7 @@ const DEFAULT_DESCRIPTION =
 const MAX_LANGUAGE_TAGS = 6;
 const MAX_LANGUAGE_REPOS = 8;
 
-export function ProjectModule() {
+export function GithubModule() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
@@ -105,7 +105,7 @@ export function ProjectModule() {
           key={project.id}
           delay={index * 0.1}
         >
-          <div>
+          <div className="flex flex-col h-full">
             {/* Header */}
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-center gap-3">

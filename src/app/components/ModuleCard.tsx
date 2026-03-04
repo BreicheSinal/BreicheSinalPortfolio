@@ -21,7 +21,7 @@ export function ModuleCard({
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay }}
       whileHover={{ scale: hoverScale }}
-      className={`group relative border border-cyan-500/30 bg-slate-900/80 backdrop-blur-sm p-6 overflow-hidden ${className}`}
+      className={`group relative border border-cyan-500/30 bg-slate-900/80 backdrop-blur-sm p-6 overflow-hidden flex flex-col h-full ${className}`}
     >
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <div className="absolute inset-0 border-2 border-cyan-400 shadow-[0_0_20px_rgba(0,183,255,0.5)]" />
@@ -32,7 +32,7 @@ export function ModuleCard({
       <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-cyan-400" />
       <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-cyan-400" />
 
-      <div className="relative z-10 h-full">{children}</div>
+      <div className="relative z-10 flex flex-col h-full">{children}</div>
 
       <motion.div
         className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-400/10 to-transparent pointer-events-none"

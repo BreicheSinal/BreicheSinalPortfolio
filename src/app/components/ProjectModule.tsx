@@ -1,6 +1,6 @@
-import { motion } from 'motion/react';
-import { ExternalLink, Code2, Cpu } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { ExternalLink, Code2, Cpu } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ModuleCard } from "./ModuleCard";
 
 interface Project {
   id: string;
@@ -12,8 +12,9 @@ interface Project {
   demoUrl?: string;
 }
 
-const GITHUB_USER = 'BreicheSinal';
-const DEFAULT_DESCRIPTION = 'Public repository on GitHub. See the code for full details.';
+const GITHUB_USER = "BreicheSinal";
+const DEFAULT_DESCRIPTION =
+  "Public repository on GitHub. See the code for full details.";
 const MAX_LANGUAGE_TAGS = 6;
 const MAX_LANGUAGE_REPOS = 8;
 
@@ -21,7 +22,7 @@ export function ProjectModule() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
-  const [visibleCount, setVisibleCount] = useState(4);
+  const [visibleCount, setVisibleCount] = useState(2);
 
   useEffect(() => {
     let isActive = true;
@@ -30,16 +31,16 @@ export function ProjectModule() {
       try {
         setIsLoading(true);
         setHasError(false);
-        setVisibleCount(4);
+        setVisibleCount(2);
 
         const repoResponse = await fetch(
           `/api/github-repos?user=${encodeURIComponent(
-            GITHUB_USER
-          )}&maxLanguageRepos=${MAX_LANGUAGE_REPOS}`
+            GITHUB_USER,
+          )}&maxLanguageRepos=${MAX_LANGUAGE_REPOS}`,
         );
 
         if (!repoResponse.ok) {
-          throw new Error('Failed to load GitHub repositories.');
+          throw new Error("Failed to load GitHub repositories.");
         }
 
         const enrichedRepos: Project[] = await repoResponse.json();
@@ -48,7 +49,10 @@ export function ProjectModule() {
           const trimmedRepos = enrichedRepos.map((repo) => ({
             ...repo,
             description: repo.description || DEFAULT_DESCRIPTION,
-            tech: (repo.tech.length ? repo.tech : ['General']).slice(0, MAX_LANGUAGE_TAGS),
+            tech: (repo.tech.length ? repo.tech : ["General"]).slice(
+              0,
+              MAX_LANGUAGE_TAGS,
+            ),
           }));
 
           setProjects(trimmedRepos);
@@ -72,9 +76,12 @@ export function ProjectModule() {
   }, []);
 
   const canLoadMore = !isLoading && !hasError && visibleCount < projects.length;
-  const canShowLess = !isLoading && !hasError && visibleCount > 4;
+  const canShowLess = !isLoading && !hasError && visibleCount > 2;
   const canShowAll =
-    !isLoading && !hasError && projects.length > 0 && visibleCount < projects.length;
+    !isLoading &&
+    !hasError &&
+    projects.length > 0 &&
+    visibleCount < projects.length;
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -94,28 +101,11 @@ export function ProjectModule() {
         </div>
       )}
       {projects.slice(0, visibleCount).map((project, index) => (
-        <motion.div
+        <ModuleCard
           key={project.id}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.5, delay: index * 0.1 }}
-          whileHover={{ scale: 1.02 }}
-          className="group relative border border-cyan-500/30 bg-slate-900/80 backdrop-blur-sm p-6 overflow-hidden"
+          delay={index * 0.1}
         >
-          {/* Animated border glow on hover */}
-          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <div className="absolute inset-0 border-2 border-cyan-400 shadow-[0_0_20px_rgba(0,183,255,0.5)]" />
-          </div>
-
-          {/* Corner brackets */}
-          <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-cyan-400" />
-          <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-cyan-400" />
-          <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-cyan-400" />
-          <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-cyan-400" />
-
-          {/* Content */}
-          <div className="relative z-10">
+          <div>
             {/* Header */}
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-center gap-3">
@@ -131,14 +121,16 @@ export function ProjectModule() {
                   </h3>
                 </div>
               </div>
-              
-              <div className={`px-2 py-1 text-[10px] font-mono border ${
-                project.status === 'ACTIVE' 
-                  ? 'border-green-500/50 text-green-400 bg-green-500/10' 
-                  : project.status === 'MAINTENANCE'
-                  ? 'border-yellow-500/50 text-yellow-400 bg-yellow-500/10'
-                  : 'border-cyan-500/50 text-cyan-400 bg-cyan-500/10'
-              }`}>
+
+              <div
+                className={`px-2 py-1 text-[10px] font-mono border ${
+                  project.status === "ACTIVE"
+                    ? "border-green-500/50 text-green-400 bg-green-500/10"
+                    : project.status === "MAINTENANCE"
+                      ? "border-yellow-500/50 text-yellow-400 bg-yellow-500/10"
+                      : "border-cyan-500/50 text-cyan-400 bg-cyan-500/10"
+                }`}
+              >
                 {project.status}
               </div>
             </div>
@@ -148,62 +140,51 @@ export function ProjectModule() {
               {project.description}
             </p>
 
-            {/* Tech stack */}
-            <div className="flex flex-wrap gap-2 mb-4">
-              {project.tech.map((tech) => (
-                <span
-                  key={tech}
-                  className="px-2 py-1 text-[10px] font-mono border border-cyan-500/30 text-cyan-400 bg-slate-800/50 tracking-wider"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
+            <div className="mt-auto">
+              {/* Tech stack */}
+              <div className="flex flex-wrap gap-2 mb-4">
+                {project.tech.map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-2 py-1 text-[10px] font-mono border border-cyan-500/30 text-cyan-400 bg-slate-800/50 tracking-wider"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
 
-            {/* Actions */}
-            <div className="flex gap-3 pt-4 border-t border-cyan-500/20">
-              <a
-                href={project.codeUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-2 text-xs font-mono text-cyan-400 hover:text-cyan-300 transition-colors"
-              >
-                <Code2 className="w-4 h-4" />
-                <span>CODE</span>
-              </a>
-              {project.demoUrl ? (
+              {/* Actions */}
+              <div className="flex gap-3 pt-4 border-t border-cyan-500/20">
                 <a
-                  href={project.demoUrl}
+                  href={project.codeUrl}
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center gap-2 text-xs font-mono text-cyan-400 hover:text-cyan-300 transition-colors"
                 >
-                  <ExternalLink className="w-4 h-4" />
-                  <span>DEMO</span>
+                  <Code2 className="w-4 h-4" />
+                  <span>CODE</span>
                 </a>
-              ) : (
-                <span className="flex items-center gap-2 text-xs font-mono text-cyan-400/40">
-                  <ExternalLink className="w-4 h-4" />
-                  <span>DEMO</span>
-                </span>
-              )}
+                {project.demoUrl && (
+                  <a
+                    href={project.demoUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-2 text-xs font-mono text-cyan-400 hover:text-cyan-300 transition-colors"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    <span>DEMO</span>
+                  </a>
+                )}
+              </div>
             </div>
           </div>
-
-          {/* Scanning effect on hover */}
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-400/10 to-transparent pointer-events-none"
-            initial={{ top: '-100%' }}
-            whileHover={{ top: '100%' }}
-            transition={{ duration: 0.6, ease: 'linear' }}
-          />
-        </motion.div>
+        </ModuleCard>
       ))}
       {(canLoadMore || canShowLess || canShowAll) && (
         <div className="col-span-full flex flex-wrap justify-center gap-3">
           {canLoadMore && (
             <button
-              onClick={() => setVisibleCount((count) => count + 4)}
+              onClick={() => setVisibleCount((count) => count + 2)}
               className="border border-cyan-400 text-cyan-400 font-mono text-sm tracking-wider py-3 px-6 hover:bg-cyan-400 hover:text-slate-900 transition-all"
             >
               LOAD MORE
@@ -219,7 +200,7 @@ export function ProjectModule() {
           )}
           {canShowLess && (
             <button
-              onClick={() => setVisibleCount(4)}
+              onClick={() => setVisibleCount(2)}
               className="border border-cyan-400/30 text-cyan-400/80 font-mono text-sm tracking-wider py-3 px-6 hover:border-cyan-400 hover:text-cyan-300 transition-all"
             >
               SHOW LESS

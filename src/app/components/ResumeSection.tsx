@@ -1,24 +1,24 @@
-import { motion } from 'motion/react';
-import { Download, FileText, CheckCircle2 } from 'lucide-react';
+import { motion } from "motion/react";
+import { Download, FileText, CheckCircle2 } from "lucide-react";
 
 const specifications = [
-  { label: 'Name', value: 'Sinal Breiche' },
-  { label: 'Role', value: 'Full Stack Web Developer' },
-  { label: 'Experience', value: '2+ Years' },
-  { label: 'Location', value: 'Beirut, Lebanon' },
-  { label: 'Education', value: 'Computer Science - CG & Animation' },
-  { label: 'Status', value: 'Available for Opportunities', highlight: true },
+  { label: "Name", value: "Sinal Breiche" },
+  { label: "Role", value: "Full Stack Web Developer" },
+  { label: "Experience", value: "2+ Years" },
+  { label: "Location", value: "Beirut, Lebanon" },
+  { label: "Education", value: "Computer Science - CG & Animation" },
+  { label: "Status", value: "Available for Opportunities", highlight: true },
 ];
 
 const expertise = [
-  'Frontend Development (React v19, NextJS, Angular)',
-  'Backend Development (Node.js, Express.js, Laravel v11)',
-  'Database Design (MySQL, MongoDB, Firebase)',
-  'Real-time Applications (Socket.io, WebSocket)',
-  'Game Development (Unity 2D/3D)',
-  '3D Modeling & Animation (3ds Max, Maya, ZBrush)',
-  'Version Control & CI/CD (Git, Bitbucket Pipelines)',
-  'Cloud Services (Vercel) & API Development',
+  "Frontend Development (React v19, NextJS, Angular)",
+  "Backend Development (Node.js, Express.js, Laravel v11)",
+  "Database Design (MySQL, MongoDB, Firebase)",
+  "Real-time Applications (Socket.io, WebSocket)",
+  "Game Development (Unity 2D/3D)",
+  "3D Modeling & Animation (3ds Max, Maya, ZBrush)",
+  "Version Control & CI/CD (Git, Bitbucket Pipelines)",
+  "Cloud Services (Vercel) & API Development",
 ];
 
 export function ResumeSection() {
@@ -55,10 +55,12 @@ export function ResumeSection() {
               transition={{ duration: 0.3, delay: index * 0.05 }}
               className="flex items-start justify-between gap-4 text-sm"
             >
-              <span className="text-slate-400 tracking-wider">{spec.label.toUpperCase()}:</span>
+              <span className="text-slate-400 tracking-wider">
+                {spec.label.toUpperCase()}:
+              </span>
               <span
                 className={`text-right ${
-                  spec.highlight ? 'text-green-400' : 'text-white'
+                  spec.highlight ? "text-green-400" : "text-white"
                 }`}
               >
                 {spec.value}

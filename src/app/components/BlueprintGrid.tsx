@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
 export function BlueprintGrid() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -8,7 +8,7 @@ export function BlueprintGrid() {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     const resize = () => {
@@ -17,13 +17,13 @@ export function BlueprintGrid() {
     };
 
     resize();
-    window.addEventListener('resize', resize);
+    window.addEventListener("resize", resize);
 
     const handleScroll = () => {
       scrollY.current = window.scrollY;
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     const draw = () => {
       if (!ctx || !canvas) return;
@@ -33,7 +33,7 @@ export function BlueprintGrid() {
       const gridSize = 40;
       const offsetY = scrollY.current * 0.5;
 
-      ctx.strokeStyle = 'rgba(0, 183, 255, 0.15)';
+      ctx.strokeStyle = "rgba(0, 183, 255, 0.15)";
       ctx.lineWidth = 1;
 
       // Vertical lines
@@ -59,8 +59,8 @@ export function BlueprintGrid() {
     draw();
 
     return () => {
-      window.removeEventListener('resize', resize);
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("resize", resize);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 

@@ -1,5 +1,5 @@
-import { motion } from 'motion/react';
-import { Award, Calendar } from 'lucide-react';
+import { motion } from "motion/react";
+import { Award, Calendar } from "lucide-react";
 
 interface Certificate {
   id: string;
@@ -12,28 +12,28 @@ interface Certificate {
 
 const certificates: Certificate[] = [
   {
-    id: 'CERT-001',
-    title: 'Full Stack Web Development',
-    institution: 'SE Factory',
-    location: 'Beirut, Lebanon',
-    period: 'OCT 2024 – JAN 2025',
+    id: "CERT-001",
+    title: "Full Stack Web Development",
+    institution: "SE Factory",
+    location: "Beirut, Lebanon",
+    period: "OCT 2024 – JAN 2025",
     description: [
-      'Participated in a 12-week intensive full-stack web development program',
-      'Covered front-end and backend development, version control',
-      'Completed 8 weeks of lectures, workshops, and projects',
-      'Additional 4 weeks dedicated to final project implementation',
+      "Participated in a 12-week intensive full-stack web development program",
+      "Covered front-end and backend development, version control",
+      "Completed 8 weeks of lectures, workshops, and projects",
+      "Additional 4 weeks dedicated to final project implementation",
     ],
   },
   {
-    id: 'CERT-002',
-    title: 'Electronics and Coding Microcontrollers Course',
-    institution: 'Young Makers',
-    location: 'Beirut, Lebanon',
-    period: 'MAY 2021',
+    id: "CERT-002",
+    title: "Electronics and Coding Microcontrollers Course",
+    institution: "Young Makers",
+    location: "Beirut, Lebanon",
+    period: "MAY 2021",
     description: [
-      'Completed comprehensive course covering Arduino programming',
-      'Learned circuit design and sensor integration',
-      'Planned and executed a vending machine project',
+      "Completed comprehensive course covering Arduino programming",
+      "Learned circuit design and sensor integration",
+      "Planned and executed a vending machine project",
     ],
   },
 ];
@@ -46,7 +46,7 @@ export function Certifications() {
           key={cert.id}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
+          viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.5, delay: index * 0.1 }}
           className="relative border border-cyan-500/30 bg-slate-900/80 backdrop-blur-sm p-6 hover:border-cyan-400/50 transition-colors"
         >
@@ -72,9 +72,7 @@ export function Certifications() {
               <h3 className="text-lg font-mono text-white mb-1 tracking-wide leading-tight">
                 {cert.title}
               </h3>
-              <h4 className="text-base text-cyan-400">
-                {cert.institution}
-              </h4>
+              <h4 className="text-base text-cyan-400">{cert.institution}</h4>
             </div>
           </div>
 
@@ -93,7 +91,10 @@ export function Certifications() {
           {/* Description */}
           <ul className="space-y-2">
             {cert.description.map((item, i) => (
-              <li key={i} className="flex items-start gap-2 text-sm text-slate-300">
+              <li
+                key={i}
+                className="flex items-start gap-2 text-sm text-slate-300"
+              >
                 <div className="w-1.5 h-1.5 bg-cyan-400 mt-2 flex-shrink-0" />
                 <span className="font-light">{item}</span>
               </li>

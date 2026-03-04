@@ -4,14 +4,24 @@ import { ScanningLine } from "./components/ScanningLine";
 import { TechnicalPanel } from "./components/TechnicalPanel";
 import { SkillDiagram } from "./components/SkillDiagram";
 import { ProjectModule } from "./components/ProjectModule";
+import { UnityGamesModule } from "./components/UnityGamesModule";
+import { ModelingModule } from "./components/ModelingModule";
 import { ExperienceTimeline } from "./components/ExperienceTimeline";
 import { ResumeSection } from "./components/ResumeSection";
 import { Certifications } from "./components/Certifications";
 import { Navbar } from "./components/Navbar";
-import { Mail, Github, Linkedin, ChevronDown, Code } from "lucide-react";
+import { Mail, Github, Linkedin, Code } from "lucide-react";
 import { motion } from "motion/react";
 
 export default function App() {
+  const headlineSpeed = 70;
+  const headline = "FULL STACK WEB DEVELOPER";
+  const unityTagline = "UNITY GAME DEVELOPMENT ENTHUSIAST";
+  const cgTagline = "CG GENERALIST";
+  const unityDelay = headline.length * headlineSpeed + 300;
+  const cgDelay =
+    headline.length * headlineSpeed + unityTagline.length * headlineSpeed + 600;
+
   const handleSmoothScroll = (
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string,
@@ -48,8 +58,22 @@ export default function App() {
           </motion.div>
 
           <h2 className="text-3xl md:text-5xl mb-6 font-mono tracking-tight text-white">
-            <TypingText text="FULL STACK WEB DEVELOPER" speed={70} />
+            <TypingText text={headline} speed={headlineSpeed} />
           </h2>
+          <p className="text-sm md:text-base text-cyan-300 font-mono tracking-widest mb-2">
+            <TypingText
+              text={unityTagline}
+              speed={headlineSpeed}
+              startDelay={unityDelay}
+            />
+          </p>
+          <p className="text-xs md:text-sm text-cyan-300/80 font-mono tracking-[0.4em] mb-8">
+            <TypingText
+              text={cgTagline}
+              speed={headlineSpeed}
+              startDelay={cgDelay}
+            />
+          </p>
 
           <motion.p
             initial={{ opacity: 0 }}
@@ -279,7 +303,37 @@ export default function App() {
             </h2>
           </motion.div>
 
-          <ProjectModule />
+          <div className="space-y-12">
+            <div>
+              <div className="flex items-center gap-4 mb-6">
+                <span className="font-mono text-cyan-400 text-xs tracking-[0.3em]">
+                  GITHUB REPOSITORIES
+                </span>
+                <div className="h-[1px] flex-1 bg-gradient-to-r from-cyan-400/50 to-transparent" />
+              </div>
+              <ProjectModule />
+            </div>
+
+            <div>
+              <div className="flex items-center gap-4 mb-6">
+                <span className="font-mono text-cyan-400 text-xs tracking-[0.3em]">
+                  UNITY GAMES / 2D + 3D
+                </span>
+                <div className="h-[1px] flex-1 bg-gradient-to-r from-cyan-400/50 to-transparent" />
+              </div>
+              <UnityGamesModule />
+            </div>
+
+            <div>
+              <div className="flex items-center gap-4 mb-6">
+                <span className="font-mono text-cyan-400 text-xs tracking-[0.3em]">
+                  3D MODELING & ANIMATION
+                </span>
+                <div className="h-[1px] flex-1 bg-gradient-to-r from-cyan-400/50 to-transparent" />
+              </div>
+              <ModelingModule />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -336,11 +390,13 @@ export default function App() {
 
             <div className="flex flex-wrap justify-center gap-4 mb-8">
               <a
-                href="mailto:sinalbreiche@gmail.com"
+                href="https://linkedin.com/in/sinalbreiche"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2 px-6 py-3 border border-cyan-500/30 text-cyan-400 font-mono text-sm tracking-wider hover:border-cyan-400 hover:bg-cyan-400/10 transition-all"
               >
-                <Mail className="w-4 h-4" />
-                <span>EMAIL</span>
+                <Linkedin className="w-4 h-4" />
+                <span>LINKEDIN</span>
               </a>
 
               <a
@@ -354,13 +410,27 @@ export default function App() {
               </a>
 
               <a
-                href="https://linkedin.com/in/sinalbreiche"
+                href="https://www.behance.net/sinalbreiche"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-6 py-3 border border-cyan-500/30 text-cyan-400 font-mono text-sm tracking-wider hover:border-cyan-400 hover:bg-cyan-400/10 transition-all"
               >
-                <Linkedin className="w-4 h-4" />
-                <span>LINKEDIN</span>
+                <span className="w-4 h-4 flex items-center justify-center text-[12px] font-mono leading-none text-cyan-400">
+                  B
+                  <span className="relative inline-flex items-center justify-center ml-[1px]">
+                    e
+                    <span className="absolute top-0 left-0 right-0 h-[1px] bg-cyan-400 -translate-y-[2px]" />
+                  </span>
+                </span>
+                <span>BEHANCE</span>
+              </a>
+
+              <a
+                href="mailto:sinalbreiche@gmail.com"
+                className="flex items-center gap-2 px-6 py-3 border border-cyan-500/30 text-cyan-400 font-mono text-sm tracking-wider hover:border-cyan-400 hover:bg-cyan-400/10 transition-all"
+              >
+                <Mail className="w-4 h-4" />
+                <span>EMAIL</span>
               </a>
             </div>
 
@@ -384,9 +454,10 @@ export default function App() {
               </span>
             </div>
 
-            <p className="font-mono text-xs text-slate-400">
-              © 2026 SINAL BREICHE
-            </p>
+            <div className="flex flex-col items-center md:items-end gap-1 font-mono text-xs text-slate-400">
+              <span>© 2026 SINAL BREICHE</span>
+              <span className="text-cyan-400/70 tracking-widest">v0.2.0</span>
+            </div>
           </div>
         </div>
       </footer>

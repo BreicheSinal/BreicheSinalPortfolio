@@ -100,8 +100,8 @@ export default function App() {
               VIEW PROJECTS
             </a>
             <a
-              href="#resume"
-              onClick={(e) => handleSmoothScroll(e, "#resume")}
+              href="/downloads/BreicheSinal.pdf"
+              download
               className="px-6 py-3 border border-cyan-500/30 text-white font-mono text-sm tracking-wider hover:border-cyan-400 hover:text-cyan-400 transition-all"
             >
               DOWNLOAD RESUME

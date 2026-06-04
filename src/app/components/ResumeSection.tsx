@@ -72,7 +72,7 @@ export function ResumeSection() {
         <a
           href="/downloads/BreicheSinal.pdf"
           download
-          className="w-full mt-auto px-6 py-3 border-2 border-cyan-400 text-cyan-400 font-mono text-sm tracking-wider hover:bg-cyan-400 hover:text-slate-900 transition-all flex items-center justify-center gap-2 group"
+          className="w-full mt-6 md:mt-auto px-6 py-3 border-2 border-cyan-400 text-cyan-400 font-mono text-sm tracking-wider hover:bg-cyan-400 hover:text-slate-900 transition-all flex items-center justify-center gap-2 group"
         >
           <Download className="w-4 h-4 group-hover:animate-bounce" />
           <span>DOWNLOAD RESUME</span>

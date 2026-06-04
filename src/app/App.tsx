@@ -6,6 +6,7 @@ import { SkillDiagram } from "./components/SkillDiagram";
 import { GithubModule } from "./components/GithubModule";
 import { UnityGamesModule } from "./components/UnityGamesModule";
 import { ModelingModule } from "./components/ModelingModule";
+import { InvixModule } from "./components/InvixModule";
 import { ExperienceTimeline } from "./components/ExperienceTimeline";
 import { ResumeSection } from "./components/ResumeSection";
 import { Certifications } from "./components/Certifications";
@@ -304,6 +305,16 @@ export default function App() {
           </motion.div>
 
           <div className="space-y-12">
+            <div>
+              <div className="flex items-center gap-4 mb-6">
+                <span className="font-mono text-cyan-400 text-xs tracking-[0.3em]">
+                  SELECTED PROJECT
+                </span>
+                <div className="h-[1px] flex-1 bg-gradient-to-r from-cyan-400/50 to-transparent" />
+              </div>
+              <InvixModule />
+            </div>
+
             <div>
               <div className="flex items-center gap-4 mb-6">
                 <span className="font-mono text-cyan-400 text-xs tracking-[0.3em]">

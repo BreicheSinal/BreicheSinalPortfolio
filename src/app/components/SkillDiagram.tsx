@@ -13,6 +13,13 @@ interface SkillCategory {
 
 const skillCategories: SkillCategory[] = [
   {
+    category: "AI Tools",
+    skills: [
+      { name: "Claude", level: 85 },
+      { name: "Codex", level: 80 },
+    ],
+  },
+  {
     category: "Programming Languages",
     skills: [
       { name: "JavaScript", level: 85 },
@@ -72,7 +79,7 @@ const skillCategories: SkillCategory[] = [
 export function SkillDiagram() {
   const [isVisible, setIsVisible] = useState(false);
   const [activeCategory, setActiveCategory] = useState(
-    skillCategories[0]?.category ?? ""
+    skillCategories[0]?.category ?? "",
   );
 
   useEffect(() => {
@@ -80,7 +87,7 @@ export function SkillDiagram() {
   }, []);
 
   const selectedCategory = skillCategories.find(
-    (category) => category.category === activeCategory
+    (category) => category.category === activeCategory,
   );
 
   return (
@@ -113,9 +120,7 @@ export function SkillDiagram() {
                       {category.skills.length}
                     </span>
                   </div>
-                  {isActive && (
-                    <div className="mt-2 h-[1px] w-full bg-gradient-to-r from-cyan-400/70 via-cyan-300/40 to-transparent" />
-                  )}
+                  {/* removed selected underline per request */}
                 </button>
               );
             })}

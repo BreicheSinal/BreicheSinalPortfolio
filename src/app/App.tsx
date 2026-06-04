@@ -467,7 +467,7 @@ export default function App() {
 
             <div className="flex flex-col items-center md:items-end gap-1 font-mono text-xs text-slate-400">
               <span>© 2026 SINAL BREICHE</span>
-              <span className="text-cyan-400/70 tracking-widest">v0.3.0</span>
+              <span className="text-cyan-400/70 tracking-widest">v0.4.0</span>
             </div>
           </div>
         </div>
